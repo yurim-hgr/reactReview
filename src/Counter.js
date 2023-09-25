@@ -7,12 +7,16 @@ function Counter() {
     const number = numberstate[0];
     const setNumber = numberstate[1];
 
+
+    //그 다음 상태를 파라미터로 넣어준것이 아니라, 값을 업데이트 하는 함수를 파라미터로 넣어주었습니다.
+    // 함수형 업데이트는 주로 나중에 컴포넌트를 최적화를 하게 될 때 사용하게 됩니다.
+
     const onIncrease = () => {
-        setNumber(number + 1);
+        setNumber(preNumber => preNumber + 1);
     }
 
     const onDecrease = () => {
-        setNumber(number - 1);
+        setNumber(preNumber => preNumber - 1);
     }
   return (
     <div>
