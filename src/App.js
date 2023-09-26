@@ -27,16 +27,19 @@ function App() {
       id: 1,
       username: "velopert",
       email: "public.velopert@gmail.com",
+      active: true,
     },
     {
       id: 2,
-      username: "tester",
-      email: "tester@example.com",
+      username: "yurim",
+      email: "yurim@example.com",
+      active: false,
     },
     {
       id: 3,
       username: "liz",
       email: "liz@example.com",
+      active: false,
     },
   ]);
   // 파라미터를 넣어주면, 이 값이 .current 값의 기본값이 됩니다.
@@ -66,6 +69,14 @@ function App() {
     setUsers(users.filter((user) => user.id !== id));
   };
 
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id == id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
+
   return (
     <>
       <CreateUser
@@ -74,7 +85,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </>
   );
 }
