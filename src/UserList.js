@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // 한 파일에 여러개의 컴포넌트를 선언해도 괜찮습니다.
 
 function User({ user, onRemove, onToggle }) {
+  useEffect(() => {
+    console.log(user);
+    // return () => {
+    //   console.log("user가 바뀌기전 ..");
+    //   console.log(user);
+    // };
+  });
+
   return (
     <div>
       <b

@@ -19,7 +19,7 @@ function App() {
       ...Inputs,
       [name]: value,
     });
-    console.log(name, value);
+    // console.log(name, value);
   };
   //배열에 변화를 줄 때에는 객체와 마찬가지로, 불변성을 지켜주어야 합니다
   const [users, setUsers] = useState([
@@ -65,7 +65,7 @@ function App() {
     nextId.current += 1;
   };
   const onRemove = (id) => {
-    console.log(email);
+    // console.log(email);
     setUsers(users.filter((user) => user.id !== id));
   };
 
