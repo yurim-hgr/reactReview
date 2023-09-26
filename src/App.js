@@ -1,79 +1,82 @@
-import React , {useRef , useState} from 'react';
-import Wrapper from './Wrapper';
-import Hello from './Hello';
-import ChoiceContainer from './ChoiceContainer';
-import Title from './Title';
-import UserList from './UserList';
-import NewChoiceList from './NewChoiceList';
-import CreateUser from './CreateUser';
+import React, { useRef, useState } from "react";
+import Wrapper from "./Wrapper";
+import Hello from "./Hello";
+import ChoiceContainer from "./ChoiceContainer";
+import Title from "./Title";
+import UserList from "./UserList";
+import NewChoiceList from "./NewChoiceList";
+import CreateUser from "./CreateUser";
 
 function App() {
-  const [Inputs , setInputs ] = useState({
-    username : '',
-    email : ''
-  })
-  const {username, email } = Inputs;
-  const onChange = e =>{
+  const [Inputs, setInputs] = useState({
+    username: "",
+    email: "",
+  });
+  const { username, email } = Inputs;
+  const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
       ...Inputs,
-      [name] : value
+      [name]: value,
     });
-    console.log(name , value)
-  }
+    console.log(name, value);
+  };
   //배열에 변화를 줄 때에는 객체와 마찬가지로, 불변성을 지켜주어야 합니다
-  const [ users, setUsers ] = useState([
+  const [users, setUsers] = useState([
     {
-        id: 1,
-        username: 'velopert',
-        email: 'public.velopert@gmail.com'
-      },
-      {
-        id: 2,
-        username: 'tester',
-        email: 'tester@example.com'
-      },
-      {
-        id: 3,
-        username: 'liz',
-        email: 'liz@example.com'
-      }
-  ]
-  );
+      id: 1,
+      username: "velopert",
+      email: "public.velopert@gmail.com",
+    },
+    {
+      id: 2,
+      username: "tester",
+      email: "tester@example.com",
+    },
+    {
+      id: 3,
+      username: "liz",
+      email: "liz@example.com",
+    },
+  ]);
   // 파라미터를 넣어주면, 이 값이 .current 값의 기본값이 됩니다.
   // 이 값을 수정 할때에는 .current 값을 수정하면 되고
   // 조회 할 때에는 .current 를 조회
   const nextId = useRef(4);
-  const onCreate = () =>{
-     //나중에 구현 할 배열에 항목 추가하는 로직
+  const onCreate = () => {
+    //나중에 구현 할 배열에 항목 추가하는 로직
 
     const user = {
-      id : nextId.current ,
-      username, 
-      email 
-    }
+      id: nextId.current,
+      username,
+      email,
+    };
     // setUsers([ ...users ,user]);
 
     setUsers(users.concat(user));
 
     setInputs({
-      username : '',
-      email : ''
+      username: "",
+      email: "",
     });
     nextId.current += 1;
-    
+  };
+  const onRemove = (id) => {
+    console.log(email);
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   return (
     <>
-      <CreateUser 
-        username = {username}
-        email = {email}
+      <CreateUser
+        username={username}
+        email={email}
         onChange={onChange}
-        onCreate={onCreate} />
-      <UserList users = {users} />
+        onCreate={onCreate}
+      />
+      <UserList users={users} onRemove={onRemove} />
     </>
-  )
+  );
 }
 
 export default App;
