@@ -4,19 +4,20 @@ import Hello from './Hello';
 import ChoiceContainer from './ChoiceContainer';
 import Title from './Title';
 import UserList from './UserList';
+import NewChoiceList from './NewChoiceList';
 
 function App() {
   
   return (
-  //   <>
-  //     <UserList/>
-  //   </>
-  <>
-    <Wrapper>
-      <Title name="세로 초이스 타입" />
-      <ChoiceContainer/>
-    </Wrapper>
-  </>
+    <>
+      <NewChoiceList />
+    </>
+  // <>
+  //   <Wrapper>
+  //     <Title name="세로 초이스 타입" />
+  //     <ChoiceContainer/>
+  //   </Wrapper>
+  // </>
   );
 
 }
