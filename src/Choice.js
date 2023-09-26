@@ -7,7 +7,7 @@ function Choice ({desc, isSpecial}) {
         padding: '8px 16px',
         
         borderRadius: '30px',
-        backgroundColor :{color},
+        backgroundColor :isSpecial ? "green": "white",
         fontSize :"13px",
         cursor: "pointer"
     };
@@ -16,13 +16,13 @@ function Choice ({desc, isSpecial}) {
     // 추후 class name 을 바꾸는 방식으로 하는게 좋아보임 .. 
     // 그리고 choice 도 map 합수등을 반복적인 컴포넌트를 쓰는게 좋아보임 ...  
 
-    
+
     const changeColor = () => {
         console.log("click", color)
         // const ccc = gre
         setColor(prev => prev  == "green"? "white" : "green" )
     }
-    return <div style={style} onClick={changeColor}>
+    return <div style={style} >
                 {desc}                 
             </div>
 }
