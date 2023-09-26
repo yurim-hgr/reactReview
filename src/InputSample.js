@@ -1,27 +1,44 @@
 import React, {useState} from 'react';
 
 function InputSample() {
+    const [inputs, setInputs ] = useState({
+        name : '',
+        nickname : ''
+    });
 
-    const [text, setText ] = useState('');
-
+    const { name, nickname } = inputs; // 비구조화 할당을 통해 값 추출
+    
+    //불변성을 지켜주어야만 리액트 컴포넌트에서 상태가 업데이트가 됐음을 감지 할 수 있고 이에 따라 필요한 리렌더링이 진행됩니다.
     const onChange = (e) => {
-        setText(e.target.value);
+
+       const { value, name } = e.target; // 우선 e.target 에서 name과 value
+
+       // 계산된 프로퍼티 명 
+       // e.target.name = name , nickname
+       
+       setInputs({
+        ...inputs,
+        [name] : value
+       })
+
     }
 
     const onReset = (e) => {
-        setText("");
+        setInputs({
+            name: '',
+            nickname : ''
+        })
     }
 
-    // e.target 은 이벤트가 발생한 DOM 인 input DOM을 가리킴
-    // e.target.value 를 조회하면 현재 input 에 입력한 값을 알 수 있음
-
-    //input 의 상태를 관리할 때에는 input 태그의 value 값도 설정
-    return (
+    
+    return ( 
         <div>
-        <input onChange={onChange} value={text}/>
+        <input name="name"  placeholder='이름' value={name} onChange={onChange}/>
+        <input name="nickname" placeholder='닉네임' value={nickname} onChange={onChange} />
         <button onClick={onReset}>초기화</button>
         <div>
-            <b>값: {text}</b>
+            <b>값: </b>
+            {name} ({nickname})
         </div>
         </div>
     );
