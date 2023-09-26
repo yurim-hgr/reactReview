@@ -14,25 +14,8 @@ function User({ user }){
 // 비효율적으로 업데이트 하는 것이 아니라, 
 // 수정되지 않는 기존의 값은 그대로 두고 원하는 곳에 내용을 삽입하거나 삭제합니다.
 
-function UserList() {
-    const users = [
-        {
-            id: 1,
-            username: 'velopert',
-            email: 'public.velopert@gmail.com'
-          },
-          {
-            id: 2,
-            username: 'tester',
-            email: 'tester@example.com'
-          },
-          {
-            id: 3,
-            username: 'liz',
-            email: 'liz@example.com'
-          }
-    ];
-
+function UserList({users}) {
+    
     return (
         <div>
             {
