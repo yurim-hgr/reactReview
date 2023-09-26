@@ -8,10 +8,17 @@ import UserList from './UserList';
 function App() {
   
   return (
-    <>
-      <UserList/>
-    </>
+  //   <>
+  //     <UserList/>
+  //   </>
+  <>
+    <Wrapper>
+      <Title name="세로 초이스 타입" />
+      <ChoiceContainer/>
+    </Wrapper>
+  </>
   );
+
 }
 
 export default App;
