@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import Wrapper from "./Wrapper";
 import Hello from "./Hello";
 import ChoiceContainer from "./ChoiceContainer";
@@ -18,14 +18,17 @@ function App() {
     email: "",
   });
   const { username, email } = Inputs;
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...Inputs,
-      [name]: value,
-    });
-    // console.log(name, value);
-  };
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setInputs({
+        ...Inputs,
+        [name]: value,
+      });
+      // console.log(name, value);
+    },
+    [Inputs]
+  );
   //배열에 변화를 줄 때에는 객체와 마찬가지로, 불변성을 지켜주어야 합니다
   const [users, setUsers] = useState([
     {
@@ -51,9 +54,8 @@ function App() {
   // 이 값을 수정 할때에는 .current 값을 수정하면 되고
   // 조회 할 때에는 .current 를 조회
   const nextId = useRef(4);
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     //나중에 구현 할 배열에 항목 추가하는 로직
-
     const user = {
       id: nextId.current,
       username,
@@ -68,19 +70,25 @@ function App() {
       email: "",
     });
     nextId.current += 1;
-  };
-  const onRemove = (id) => {
-    // console.log(email);
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  }, [users, username, email]);
+  const onRemove = useCallback(
+    (id) => {
+      // console.log(email);
+      setUsers(users.filter((user) => user.id !== id));
+    },
+    [users]
+  );
 
-  const onToggle = (id) => {
-    setUsers(
-      users.map((user) =>
-        user.id == id ? { ...user, active: !user.active } : user
-      )
-    );
-  };
+  const onToggle = useCallback(
+    (id) => {
+      setUsers(
+        users.map((user) =>
+          user.id == id ? { ...user, active: !user.active } : user
+        )
+      );
+    },
+    [users]
+  );
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
