@@ -18,17 +18,14 @@ function App() {
     email: "",
   });
   const { username, email } = Inputs;
-  const onChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      setInputs({
-        ...Inputs,
-        [name]: value,
-      });
-      // console.log(name, value);
-    },
-    [Inputs]
-  );
+  const onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...Inputs,
+      [name]: value,
+    });
+    // console.log(name, value);
+  }, []);
   //배열에 변화를 줄 때에는 객체와 마찬가지로, 불변성을 지켜주어야 합니다
   const [users, setUsers] = useState([
     {
@@ -63,21 +60,18 @@ function App() {
     };
     // setUsers([ ...users ,user]);
 
-    setUsers(users.concat(user));
+    setUsers((users) => users.concat(user));
 
     setInputs({
       username: "",
       email: "",
     });
     nextId.current += 1;
-  }, [users, username, email]);
-  const onRemove = useCallback(
-    (id) => {
-      // console.log(email);
-      setUsers(users.filter((user) => user.id !== id));
-    },
-    [users]
-  );
+  }, [username, email]);
+  const onRemove = useCallback((id) => {
+    // console.log(email);
+    setUsers(users.filter((user) => user.id !== id));
+  }, []);
 
   const onToggle = useCallback(
     (id) => {
