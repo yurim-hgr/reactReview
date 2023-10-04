@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 const User = React.memo(function User({ user, onRemove, onToggle }) {
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     // return () => {
     //   console.log("user가 바뀌기전 ..");
     //   console.log(user);
