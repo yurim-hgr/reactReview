@@ -113,7 +113,7 @@ function App() {
     });
   }, []);
 
-  //ㅎㅎㅎㅎ
+  // 주석 수정
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <>
