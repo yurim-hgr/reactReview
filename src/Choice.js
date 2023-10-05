@@ -1,6 +1,6 @@
 import React, {useState, useRef } from 'react';
 
-function Choice ({desc, isSpecial}) {
+function Choice ({choice, desc, isSpecial, onClick}) {
     const [color , setColor ] = useState("white");
     const style = {
         border: '1px solid black',
@@ -22,7 +22,7 @@ function Choice ({desc, isSpecial}) {
         // const ccc = gre
         setColor(prev => prev  == "green"? "white" : "green" )
     }
-    return <div style={style} >
+    return <div style={style} onClick={() => onClick(choice.id)}>
                 {desc}                 
             </div>
 }
