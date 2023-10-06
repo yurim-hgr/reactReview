@@ -37,7 +37,7 @@ function ChoiceContainer({}) {
     
   const onClick = (id, desc) => {
     
-     console.log(desc);
+    console.log(desc);
     setChoices(
       choices.map((choice) => 
         // console.log(choice.desc)
