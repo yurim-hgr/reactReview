@@ -22,7 +22,7 @@ function Choice ({choice, onClick}) {
         // const ccc = gre
         setColor(prev => prev  == "green"? "white" : "green" )
     }
-    return <div style={style} onClick={() => onClick(choice.id)}>
+    return <div style={style} onClick={() => onClick(choice.id, choice.desc)}>
                 {choice.desc}                 
             </div>
 }

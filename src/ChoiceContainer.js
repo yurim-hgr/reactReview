@@ -35,15 +35,16 @@ function ChoiceContainer({}) {
     }
   ]);
     
-  const onClick = (id) => {
+  const onClick = (id, desc) => {
     
-    // console.log(id , choices.id);
+     console.log(desc);
     setChoices(
       choices.map((choice) => 
         // console.log(choice.desc)
-        choice.id === id ? { ...choice, isSpecial: !choice.isSpecial } : choice
+        choice.id === id ? { ...choice, isSpecial: !choice.isSpecial } : { ...choice, isSpecial: false }
       
       )
+      
     );
   }
   
