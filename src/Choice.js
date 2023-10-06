@@ -1,13 +1,13 @@
 import React, {useState, useRef } from 'react';
 
-function Choice ({choice, desc, isSpecial, onClick}) {
+function Choice ({choice, onClick}) {
     const [color , setColor ] = useState("white");
     const style = {
         border: '1px solid black',
         padding: '8px 16px',
         
         borderRadius: '30px',
-        backgroundColor :isSpecial ? "green": "white",
+        backgroundColor :choice.isSpecial ? "green": "white",
         fontSize :"13px",
         cursor: "pointer"
     };
@@ -23,7 +23,7 @@ function Choice ({choice, desc, isSpecial, onClick}) {
         setColor(prev => prev  == "green"? "white" : "green" )
     }
     return <div style={style} onClick={() => onClick(choice.id)}>
-                {desc}                 
+                {choice.desc}                 
             </div>
 }
 

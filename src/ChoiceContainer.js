@@ -38,19 +38,19 @@ function ChoiceContainer({}) {
   const onClick = (id) => {
     
     // console.log(id , choices.id);
-    // setChoices(
-      // choices.map(choice =>
-        console.log(id)
-        // user.id === id ? { ...user, isSpecial: !user.isSpecial } : user
+    setChoices(
+      choices.map((choice) => 
+        // console.log(choice.desc)
+        choice.id === id ? { ...choice, isSpecial: !choice.isSpecial } : choice
       
-      // )
-    // );
+      )
+    );
   }
   
   return (
     <>
       {choices.map((choice, index) => (
-        <Choice key={index} choice = {choice} desc={choice.desc} isSpecial= {choice.isSpecial} onClick={onClick} />
+        <Choice key={index} choice = {choice}  onClick={onClick} />
       ))} 
     </>
   );
